@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ali-sensor")(type "KiCad")(uri "${KIPRJMOD}/ali-sensor.pretty")(options "")(descr ""))
+)

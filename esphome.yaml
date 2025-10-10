@@ -1,0 +1,31 @@
+esphome:
+  name: ali-sensor
+  friendly_name: ali-sensor
+
+esp32:
+  board: esp32-c6-devkitc-1
+  framework:
+    type: esp-idf
+
+logger:
+
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    pin: GPIO8
+    num_leds: 1
+    chipset: ws2812
+    name: "Onboard RGB LED"
+    effects:
+      - random:
+      - flicker:
+      - addressable_rainbow:
+  - platform: binary
+    name: "Onboard blue LED"
+    output: onboard_led
+    restore_mode: RESTORE_DEFAULT_OFF
+
+output:
+  - id: onboard_led
+    platform: gpio
+    pin: GPIO15
