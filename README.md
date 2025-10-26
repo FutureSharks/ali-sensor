@@ -12,7 +12,7 @@ The PCB is designed around an [ESP32-C6 Super Mini](https://www.espboards.dev/es
 
 ## Example build
 
-![?](img/??.png)
+![complete-](img/complete-2.jpg) ![complete-1](img/complete-1.jpg)
 
 This example build measures Lux, CO₂ , VOCs, NOx index, temperature, humidity, presence and motion using the following devices from AliExpress:
 

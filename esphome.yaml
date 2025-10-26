@@ -1,6 +1,9 @@
 esphome:
   name: ali-sensor
   friendly_name: ali-sensor
+  on_boot:
+    then:
+      - switch.turn_off: btswitch
 
 esp32:
   board: esp32-c6-devkitc-1
@@ -22,10 +25,59 @@ light:
       - addressable_rainbow:
   - platform: binary
     name: "Onboard blue LED"
-    output: onboard_led
+    output: blue_led
     restore_mode: RESTORE_DEFAULT_OFF
 
 output:
-  - id: onboard_led
+  - id: blue_led
     platform: gpio
     pin: GPIO15
+
+uart:
+  baud_rate: 256000
+  rx_pin: 20
+  tx_pin: 19
+
+ld2410:
+
+binary_sensor:
+  - platform: ld2410
+    has_target:
+      name: Presence
+    has_moving_target:
+      name: Moving Target
+    has_still_target:
+      name: Still Target
+    out_pin_presence_status:
+      name: out pin presence status
+
+switch:
+  - platform: ld2410
+    engineering_mode:
+      name: "engineering mode"
+    bluetooth:
+      name: "control bluetooth"
+      id: btswitch
+
+i2c:
+  sda: 3
+  scl: 2
+  frequency: 200kHz
+
+sensor:
+  - platform: sgp4x
+    voc:
+      name: "VOC Index"
+    nox:
+      name: "NOx Index"
+  - platform: veml7700
+    address: 0x10
+    update_interval: 10s
+    ambient_light: "Ambient light"
+  - platform: scd4x
+    co2:
+      name: "CO2"
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"

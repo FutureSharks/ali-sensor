@@ -2,6 +2,8 @@
 
 The PCB and schematic are made with [KiCad](https://www.kicad.org/). The project files are in [ali-sensor](ali-sensor)
 
-![PCB](pcb.png)
+![layout](../img/layout.png)
 
-![Schematic](schematic.png)
+![Schematic](../img/schematic.png)
+
+![PCB](../img/PCB.jpg)
